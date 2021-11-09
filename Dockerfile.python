@@ -1,0 +1,16 @@
+FROM python:3.7
+
+RUN apt-get update && \
+      apt-get -y install sudo && \
+      rm -rf /var/lib/apt/list/*
+
+RUN useradd -m itversity && echo "itversity:itversity" | chpasswd && adduser itversity sudo
+RUN sed -i "s/%sudo\tALL=(ALL:ALL) ALL/%sudo\tALL=(ALL:ALL) NOPASSWD:ALL/g" /etc/sudoers
+USER itversity
+
+WORKDIR /home/itversity
+COPY labrequirements.txt labrequirements.txt
+RUN python -m pip install -r labrequirements.txt
+
+RUN echo "export PATH=\${PATH}:/home/itversity/.local/bin" >> ~/.bashrc
+CMD ["/home/itversity/.local/bin/jupyter", "lab", "--ip", "0.0.0.0"]

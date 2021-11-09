@@ -1,0 +1,30 @@
+services:
+  itvlab:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    hostname: itvlab
+    ports:
+      - "8888:8888"
+    volumes:
+      - "./python-and-sql-material:/home/itversity/python-and-sql-material"
+      - "./data:/data"
+    networks:
+      - itvlabnw
+    depends_on:
+      - "itvdbpg"
+  itvdbpg:
+    image: postgres:13
+    hostname: pg.itversity.com
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db_scripts:/docker-entrypoint-initdb.d
+      - ./itvdbpg_volume:/var/lib/postgresql/data
+    networks:
+      - itvlabnw
+    environment:
+      POSTGRES_PASSWORD: itversity
+networks:
+  itvlabnw:
+    name: itvlabnw
