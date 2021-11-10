@@ -2,7 +2,7 @@ CREATE DATABASE sms_db;
 CREATE USER sms_user WITH ENCRYPTED PASSWORD 'itversity';
 GRANT ALL ON DATABASE sms_db TO sms_user;
 
-\c lms_db
+\c sms_db
 
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
