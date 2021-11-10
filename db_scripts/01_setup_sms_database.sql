@@ -1,6 +1,6 @@
-CREATE DATABASE lms_db;
-CREATE USER lms_user WITH ENCRYPTED PASSWORD 'itversity';
-GRANT ALL ON DATABASE lms_db TO lms_user;
+CREATE DATABASE sms_db;
+CREATE USER sms_user WITH ENCRYPTED PASSWORD 'itversity';
+GRANT ALL ON DATABASE sms_db TO sms_user;
 
 \c lms_db
 
@@ -10,7 +10,7 @@ CREATE TABLE users (
     user_last_name VARCHAR(30)
 );
 
-ALTER TABLE users OWNER TO lms_user;
+ALTER TABLE users OWNER TO sms_user;
 
 INSERT INTO users (user_first_name, user_last_name)
 VALUES ('Scott', 'Tiger'),
