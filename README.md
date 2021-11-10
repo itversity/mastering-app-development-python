@@ -2,7 +2,7 @@
 
 A comprehensive workshop on Python, SQL, Docker, MongoDB, and more for Beginners via hands-on practice.
 
-## Setup Material
+## Setup self-support lab for hands-on practice
 
 Here are the instructions to set up self-support integrated lab with the material to learn Python.
 * Clone GitHub repository
