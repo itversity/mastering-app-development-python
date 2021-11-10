@@ -1,8 +1,8 @@
-FROM python:3.7
+FROM python:3.8
 
 RUN apt-get update && \
-      apt-get -y install sudo && \
-      rm -rf /var/lib/apt/list/*
+    apt-get -y install sudo telnet && \
+    rm -rf /var/lib/apt/list/*
 
 RUN useradd -m itversity && echo "itversity:itversity" | chpasswd && adduser itversity sudo
 RUN sed -i "s/%sudo\tALL=(ALL:ALL) ALL/%sudo\tALL=(ALL:ALL) NOPASSWD:ALL/g" /etc/sudoers
