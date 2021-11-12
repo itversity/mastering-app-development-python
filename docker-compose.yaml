@@ -11,8 +11,6 @@ services:
       - "./data:/data"
     networks:
       - itvlabnw
-    environment:
-      SHELL: /bin/bash
     depends_on:
       - "itvdbpg"
   itvdbpg:
