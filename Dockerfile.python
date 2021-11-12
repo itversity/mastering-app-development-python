@@ -4,8 +4,12 @@ RUN apt-get update && \
     apt-get -y install sudo telnet && \
     rm -rf /var/lib/apt/list/*
 
-RUN useradd -m itversity && echo "itversity:itversity" | chpasswd && adduser itversity sudo
+RUN adduser --disabled-password --gecos "" itversity && \
+    echo "itversity:itversity" | chpasswd && \
+    adduser itversity sudo
+
 RUN sed -i "s/%sudo\tALL=(ALL:ALL) ALL/%sudo\tALL=(ALL:ALL) NOPASSWD:ALL/g" /etc/sudoers
+
 USER itversity
 
 WORKDIR /home/itversity
