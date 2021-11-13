@@ -9,6 +9,8 @@ services:
     volumes:
       - "./python-and-sql-material:/home/itversity/python-and-sql-material"
       - "./data:/data"
+    environment:
+      SHELL: /bin/bash
     networks:
       - itvlabnw
     depends_on:
