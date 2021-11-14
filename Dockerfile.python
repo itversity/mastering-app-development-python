@@ -14,7 +14,10 @@ USER itversity
 
 WORKDIR /home/itversity
 COPY labrequirements.txt labrequirements.txt
+COPY awsrequirements.txt awsrequirements.txt
+
 RUN python -m pip install -r labrequirements.txt
+RUN python -m pip install -r awsrequirements.txt
 
 RUN echo "export PATH=\${PATH}:/home/itversity/.local/bin" >> ~/.bashrc
 CMD ["/home/itversity/.local/bin/jupyter", "lab", "--ip", "0.0.0.0"]
