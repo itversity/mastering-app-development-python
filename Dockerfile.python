@@ -1,7 +1,7 @@
 FROM python:3.8
 
 RUN apt-get update && \
-    apt-get -y install sudo telnet && \
+    apt-get -y install sudo telnet groff postgresql-client vim && \
     rm -rf /var/lib/apt/list/*
 
 RUN adduser --disabled-password --gecos "" itversity && \
@@ -16,8 +16,9 @@ WORKDIR /home/itversity
 COPY labrequirements.txt labrequirements.txt
 COPY awsrequirements.txt awsrequirements.txt
 
+RUN python -m pip install --upgrade pip
 RUN python -m pip install -r labrequirements.txt
-RUN python -m pip install -r awsrequirements.txt
+RUN sudo python -m pip install -r awsrequirements.txt
 
 RUN echo "export PATH=\${PATH}:/home/itversity/.local/bin" >> ~/.bashrc
 CMD ["/home/itversity/.local/bin/jupyter", "lab", "--ip", "0.0.0.0"]

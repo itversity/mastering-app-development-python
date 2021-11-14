@@ -8,6 +8,7 @@ services:
       - "8888:8888"
     volumes:
       - "./python-and-sql-material:/home/itversity/python-and-sql-material"
+      - "./lmsdb_scripts:/lmsdb_scripts"
       - "./data:/data"
       - "./.aws:/home/itversity/.aws"
     environment:
